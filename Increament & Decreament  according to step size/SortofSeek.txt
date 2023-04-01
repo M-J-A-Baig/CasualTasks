@@ -1,0 +1,33 @@
+// developed by Mian Khizer Shakoor
+
+// for Step Size
+static double returnDelta(double MaxValue, double MinValue, int TimeToReach)
+{
+	double delta = MaxValue - MinValue;
+	double dividend = actualSystemRate * TimeToReach;
+	return delta / dividend;
+}
+
+
+// for for increment or decrement
+static double SortOfSeek(double MaxValue, double MinValue, double currentValue, int TimeToReach)
+{
+	double step = returnDelta(MaxValue, MinValue, TimeToReach);
+
+	if (step > 0)
+	{
+		if (currentValue < MaxValue)
+			return (currentValue + step);
+		else
+		{
+			return MaxValue;
+		}
+	}
+	else
+	{
+		if (currentValue > MaxValue)
+			return (currentValue + step);
+		else
+			return MaxValue;
+	}
+}
